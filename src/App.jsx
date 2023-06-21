@@ -1,12 +1,14 @@
-import React from 'react'
+// import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "react-toastify/dist/ReactToastify.css"
 import './App.css'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 
 function App() {
 
   const [cartItem, setCartItem] = useState([]);
+
 
   const addtoCart = item => {
     
@@ -21,9 +23,22 @@ function App() {
     setCartItem([...cartItem, item])
   }
 
+  const buyNow = () => {
+    setCartItem([])
+
+    toast("Order Placed",{type:"success"})
+  }
+
+
+  const removeItem = item => {
+    setCartItem(cartItem.filter(singleItem => singleItem.id !== item.id))
+  };
+
   return (
     <>
     <h1>Hello, Pankaj</h1>
+    <button onClick={buyNow}>Place Order</button>
+    <ToastContainer />
     </>
   )
 }
