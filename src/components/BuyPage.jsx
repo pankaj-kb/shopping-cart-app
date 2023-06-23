@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Axios from "axios";
 
-// import { random, commerce } from "@faker-js/faker";
+import { faker } from '@faker-js/faker';
 
 import { Container, Col, Row } from "reactstrap";
 
@@ -26,16 +26,16 @@ const BuyPage = ({ addInCart }) => {
       },
     });
 
-    const allProduct = photos.map((photo) => ({
+    const allProduct = response.map((photo) => ({
       smallImage: photo.src.medium,
       tinyImage: photo.src.tiny,
-      // productName: random.word(),
-      // productPrice: commerce.price(),
-      // id: random.uuid(),
+      productName: faker.commerce.productName(),
+      productPrice: faker.commerce.productPrice(),
+      id: faker.string.uuid()
     }));
 
     setProduct(allProduct);
-    console.log(setProduct);
+    // console.log(setProduct);
   };
 
   useEffect(() => {
@@ -45,6 +45,11 @@ const BuyPage = ({ addInCart }) => {
   return (
     <Container fluid>
       <h1 className="text-success">Done</h1>
+      <Row>
+        {product.map(product => (
+          <span key={product.id}>{product.productName}</span>
+        ))}
+      </Row>
     </Container>
   );
 };
