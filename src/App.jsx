@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css"
 import './App.css'
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
+import BuyPage from "./components/BuyPage"
 
 function App() {
 
@@ -37,8 +38,9 @@ function App() {
   return (
     <>
     <h1>Hello, Pankaj</h1>
-    <button onClick={buyNow}>Place Order</button>
-    <ToastContainer />
+    {/* <button onClick={buyNow}>Place Order</button> */}
+    {/* <ToastContainer /> */}
+    {/* <BuyPage /> */}
     </>
   )
 }
