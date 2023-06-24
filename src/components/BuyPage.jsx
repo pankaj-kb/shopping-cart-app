@@ -7,7 +7,7 @@ import { faker } from "@faker-js/faker";
 
 import { Container, Col, Row } from "reactstrap";
 
-import CardItem from "./CardItem";
+import CartItem from "./CartItem";
 
 // import { config } from "dotenv";
 
@@ -27,7 +27,15 @@ const BuyPage = ({ addInCart }) => {
       header: {
         Authorization: apiKey,
       },
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error(error);
+      });
 
     const allProduct = response.photos.map((photo) => ({
       smallImage: photo.src.medium,
@@ -50,7 +58,7 @@ const BuyPage = ({ addInCart }) => {
       <Row>
         {product.map((product) => (
           <Col md={4} key={product.id}>
-            <CardItem product={product} addInCart={addInCart} />
+            <CartItem product={product} addInCart={addInCart} />
           </Col>
         ))}
       </Row>

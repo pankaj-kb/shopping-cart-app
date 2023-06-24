@@ -31,16 +31,16 @@ function App() {
     // toast(faker.string.uuid(), { type: "default" });
   };
 
-  // const removeItem = (item) => {
-  //   setCartItem(cartItem.filter((singleItem) => singleItem.id !== item.id));
-  // };
+  const removeItem = (item) => {
+    setCartItem(cartItem.filter((singleItem) => singleItem.id !== item.id));
+  };
 
   return (
     <>
       {/* <h1>Hello, Pankaj</h1> */}
       {/* <button onClick={buyNow}>Place Order</button> */}
       <ToastContainer />
-      <BuyPage addInCart={addInCart}/>
+      <BuyPage addInCart={addInCart} />
     </>
   );
 }
