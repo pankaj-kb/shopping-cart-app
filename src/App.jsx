@@ -22,6 +22,7 @@ function App() {
     setCartItem([...cartItem, item]);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const buyNow = () => {
     setCartItem([]);
 

@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from "react";
 
 import Axios from "axios";
 
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 import { Container, Col, Row } from "reactstrap";
+
+import CardItem from "./CardItem";
 
 // import { config } from "dotenv";
 
@@ -26,16 +29,15 @@ const BuyPage = ({ addInCart }) => {
       },
     });
 
-    const allProduct = response.map((photo) => ({
+    const allProduct = response.photos.map((photo) => ({
       smallImage: photo.src.medium,
       tinyImage: photo.src.tiny,
       productName: faker.commerce.productName(),
       productPrice: faker.commerce.productPrice(),
-      id: faker.string.uuid()
+      id: faker.string.uuid(),
     }));
 
     setProduct(allProduct);
-    // console.log(setProduct);
   };
 
   useEffect(() => {
@@ -44,10 +46,12 @@ const BuyPage = ({ addInCart }) => {
 
   return (
     <Container fluid>
-      <h1 className="text-success">Done</h1>
+      <h1 className="text-success text-center">Buy Page</h1>
       <Row>
-        {product.map(product => (
-          <span key={product.id}>{product.productName}</span>
+        {product.map((product) => (
+          <Col md={4} key={product.id}>
+            <CardItem product={product} addInCart={addInCart} />
+          </Col>
         ))}
       </Row>
     </Container>
